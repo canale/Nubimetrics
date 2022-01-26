@@ -5,9 +5,7 @@ using Nubimetrics.Domain.Contracts.Repositories;
 using Nubimetrics.Domain.Entities;
 using Nubimetrics.Domain.Exceptions;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Nubimetrics.Application.Services
@@ -34,7 +32,7 @@ namespace Nubimetrics.Application.Services
 
             if(_unauthorizedPaisIds.Any(unauthorized => unauthorized == id) )
             {
-                throw new UnauthorizedAccessException("Unauthorized request.");
+                throw new UnauthorizedException("Unauthorized request.");
             }
 
             Pais pais = await _repository.GetByIdAsync(id) ?? throw new NotFoundException($"Couln't find the resource with id: {id}.");

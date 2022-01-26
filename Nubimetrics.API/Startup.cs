@@ -6,6 +6,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Nubimetrics.API.Filters;
+using Nubimetrics.Application.Contracts;
+using Nubimetrics.Application.Services;
+using Nubimetrics.DataAccess.Contracts;
+using Nubimetrics.DataAccess.Helpers;
+using Nubimetrics.DataAccess.Repositories;
+using Nubimetrics.DataAccess.Settings;
+using Nubimetrics.Domain.Contracts.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,11 +34,20 @@ namespace Nubimetrics.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            var biopagoSettings = Configuration.GetSection("ClassifiedLocationSettings");
+            services.Configure<ClassifiedLocationSettings>(biopagoSettings);
+
+            services.AddControllers(options => options.Filters.Add<ExceptionFilter>());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Nubimetrics.API", Version = "v1" });
             });
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddTransient<IClassifiedLocationService, ClassifiedLocationService>();
+            services.AddTransient<IPaisRepository, PaisRepository>();
+            services.AddTransient<IPaisApplicationService, PaisApplicationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -11,15 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CE8487BA-7630-4E83-83F0-62A06166D3CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nubimetrics.API", "Nubimetrics.API\Nubimetrics.API.csproj", "{D5C22EED-F863-4B4A-AD83-69956F72E340}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nubimetrics.API", "Nubimetrics.API\Nubimetrics.API.csproj", "{D5C22EED-F863-4B4A-AD83-69956F72E340}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nubimetrics.Application", "Nubimetrics.Application\Nubimetrics.Application.csproj", "{30B4BB75-2C98-4FE8-B43D-5F6E967C30AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nubimetrics.Application", "Nubimetrics.Application\Nubimetrics.Application.csproj", "{30B4BB75-2C98-4FE8-B43D-5F6E967C30AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nubimetrics.Domain", "Nubimetrics.Domain\Nubimetrics.Domain.csproj", "{613E56E2-4B9F-46CC-A210-F183EA2BEA63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nubimetrics.Domain", "Nubimetrics.Domain\Nubimetrics.Domain.csproj", "{613E56E2-4B9F-46CC-A210-F183EA2BEA63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuimetrics.DataAccess", "Nuimetrics.DataAccess\Nuimetrics.DataAccess.csproj", "{96F256E5-B197-40E0-980B-F496B07C7ED0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nubimetrics.DataAccess", "Nuimetrics.DataAccess\Nubimetrics.DataAccess.csproj", "{96F256E5-B197-40E0-980B-F496B07C7ED0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nubimetrics.Tests", "Nubimetrics.Tests\Nubimetrics.Tests.csproj", "{06599961-5670-4989-97F3-73D1D8FA340E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nubimetrics.Tests", "Nubimetrics.Tests\Nubimetrics.Tests.csproj", "{06599961-5670-4989-97F3-73D1D8FA340E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
