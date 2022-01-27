@@ -1,5 +1,6 @@
 ﻿using RestSharp;
 using System;
+using System.Net;
 
 namespace Nubimetrics.DataAccess.Helpers
 {
@@ -35,6 +36,15 @@ namespace Nubimetrics.DataAccess.Helpers
         public static RestResponse<TData> When<TData>(this RestResponse<TData> response, Func<bool> predicate, Action<RestResponse<TData>> callback)
         {
             if (predicate())
+            {
+                callback(response);
+            }
+            return response;
+        }
+
+        public static RestResponse<TData> OnStatusCode<TData>(this RestResponse<TData> response, HttpStatusCode statusCode, Action<RestResponse<TData>> callback)
+        {
+            if (response.StatusCode == statusCode)
             {
                 callback(response);
             }

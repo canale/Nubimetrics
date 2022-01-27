@@ -37,8 +37,6 @@ namespace Nubimetrics.DataAccess.Helpers
 
             response
                 .OnSucces((response) => result = JsonSerializer.Deserialize<ClassifiedLocation>(response.Content, options))
-           //     .OnSucces((response) => result = response.Data)
-                .OnException((response) => throw new IntegrationServiceException("Exception ocurred when attempting to get data from ClassifiedLocationService", response.ErrorException))
                 .OnError((response) =>
                 {
                     if (response.StatusCode != HttpStatusCode.NotFound)
