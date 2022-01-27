@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Nubimetrics.Domain.Exceptions;
 using System;
 using System.Net;
+using System.Text.Json;
 
 namespace Nubimetrics.API.Filters
 {
@@ -19,15 +20,27 @@ namespace Nubimetrics.API.Filters
 
         public void OnException(ExceptionContext context)
         {
-            JsonErrorResponse json = GetErrorResponse(context.Exception);
-
             _logger.LogError(context.Exception, context.Exception.Message, context.Exception.StackTrace);
-
-            context.Result = new ObjectResult(json);
-            context.HttpContext.Response.StatusCode = (int)GetHttpStatusCode(context.HttpContext, context.Exception);
+            context.Result = GetContentResult(context.Exception);
         }
 
-        private JsonErrorResponse GetErrorResponse(Exception exception)
+
+        #region PRIVATE METHODS
+
+        private ContentResult GetContentResult(Exception exception)
+        {
+            int statusCode = (int)GetHttpStatusCode(exception);
+            ErrorResponse errorResponse = GetErrorResponse(exception, statusCode);
+
+            return new ContentResult
+            {
+                Content = JsonSerializer.Serialize(errorResponse),
+                StatusCode = statusCode,
+                ContentType = "application/json"
+            };
+        }
+
+        private ErrorResponse GetErrorResponse(Exception exception, int statusCode)
         {
             string message = "";
 
@@ -42,11 +55,10 @@ namespace Nubimetrics.API.Filters
                     break;
             }
 
-            return new JsonErrorResponse { Message = message };
+            return new ErrorResponse { Message = message, Code = statusCode };
         }
 
-
-        private HttpStatusCode GetHttpStatusCode(HttpContext httpContext, Exception exception)
+        private HttpStatusCode GetHttpStatusCode(Exception exception)
         {
             HttpStatusCode statusCode;
 
@@ -68,5 +80,7 @@ namespace Nubimetrics.API.Filters
 
             return statusCode;
         }
+
+        #endregion
     }
 }
