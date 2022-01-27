@@ -6,7 +6,6 @@ namespace Nubimetrics.Domain.Entities
 {
     public class Pais: Entity<string>
     {
-        public string Id { get; }
         public string Name { get; }
         public string Locale { get; }
         public string CurrencyId { get; }

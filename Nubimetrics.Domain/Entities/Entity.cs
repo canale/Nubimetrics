@@ -4,7 +4,7 @@ namespace Nubimetrics.Domain.Entities
 {
     public abstract class Entity<TId>
     {
-        TId Id { get;  }
+        public TId Id { get;  }
 
         public Entity(TId id)
         {

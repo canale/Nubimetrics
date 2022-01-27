@@ -4,12 +4,8 @@ using Nubimetrics.DataAccess.Exceptions;
 using Nubimetrics.DataAccess.Records;
 using Nubimetrics.DataAccess.Settings;
 using RestSharp;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using System.Net;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Nubimetrics.DataAccess.Helpers
