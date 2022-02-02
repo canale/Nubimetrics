@@ -1,10 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Nubimetrics.API.Filters;
 using Nubimetrics.Application.Contracts;
@@ -15,9 +13,6 @@ using Nubimetrics.DataAccess.Repositories;
 using Nubimetrics.DataAccess.Settings;
 using Nubimetrics.Domain.Contracts.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Nubimetrics.API
 {
@@ -35,7 +30,11 @@ namespace Nubimetrics.API
         {
 
             var biopagoSettings = Configuration.GetSection("ClassifiedLocationSettings");
-            services.Configure<ClassifiedLocationSettings>(biopagoSettings);
+            services.Configure<ApiIntegrationSettings>(biopagoSettings);
+
+
+            var currencySettings = Configuration.GetSection("CurrencySettings");
+            services.Configure<ApiIntegrationSettings>(currencySettings);
 
             services.AddControllers(options => options.Filters.Add<ExceptionFilter>());
             services.AddSwaggerGen(c =>
@@ -46,8 +45,14 @@ namespace Nubimetrics.API
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddTransient<IClassifiedLocationService, ClassifiedLocationService>();
+
+            //Repositories
             services.AddTransient<IPaisRepository, PaisRepository>();
+            services.AddTransient<IMonedaRepository, MonedaRepository>();
+
+            //Application services
             services.AddTransient<IPaisApplicationService, PaisApplicationService>();
+            services.AddTransient<IMonedaApplicationService, MonedaApplicationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,6 +1,6 @@
-﻿namespace Nubimetrics.Application.Dtos
+﻿namespace Nubimetrics.Application.Dtos.Responses
 {
-    public class PaisDto
+    public class PaisResponse
     {
        public string Id { get; set; }
        public string Name { get; set;  }

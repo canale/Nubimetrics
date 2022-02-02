@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace Nubimetrics.API.Controllers
 {
-    [ApiController]
     [Route("MyRestfulApp/[controller]")]
-    public class PaisesController : ControllerBase
+    [ApiController]
+    public class BusquedaController : ControllerBase
     {
         private readonly IPaisApplicationService _paisApplicationService;
 
-        public PaisesController(IPaisApplicationService paisApplicationService)
+        public BusquedaController(IPaisApplicationService paisApplicationService)
         {
             _paisApplicationService = paisApplicationService;
         }

@@ -1,10 +1,10 @@
-﻿using Nubimetrics.Application.Dtos;
+﻿using Nubimetrics.Application.Dtos.Responses;
 using System.Threading.Tasks;
 
 namespace Nubimetrics.Application.Contracts
 {
     public interface IPaisApplicationService
     {
-        Task<PaisDto> GetByIdAsync(string id);
+        Task<PaisResponse> GetByIdAsync(string id);
     }
 }

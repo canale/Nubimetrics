@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Nubimetrics.Application.Contracts;
-using Nubimetrics.Application.Dtos;
+using Nubimetrics.Application.Dtos.Responses;
 using Nubimetrics.Domain.Contracts.Repositories;
 using Nubimetrics.Domain.Entities;
 using Nubimetrics.Domain.Exceptions;
@@ -23,7 +23,7 @@ namespace Nubimetrics.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<PaisDto> GetByIdAsync(string id)
+        public async Task<PaisResponse> GetByIdAsync(string id)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -36,7 +36,7 @@ namespace Nubimetrics.Application.Services
             }
 
             Pais pais = await _repository.GetByIdAsync(id) ?? throw new NotFoundException($"Couln't find the resource with id: {id}.");
-            PaisDto paisDto = _mapper.Map<PaisDto>(pais);
+            PaisResponse paisDto = _mapper.Map<PaisResponse>(pais);
 
             return paisDto;
         }

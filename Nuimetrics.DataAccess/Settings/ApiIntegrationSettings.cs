@@ -1,8 +1,8 @@
 ﻿namespace Nubimetrics.DataAccess.Settings
 {
-    public class ClassifiedLocationSettings
+    public class ApiIntegrationSettings
     {
         public string UriService { get; set; }
-        public string CountryResource { get; set; }
+        public string Resource { get; set; }
     }
 }

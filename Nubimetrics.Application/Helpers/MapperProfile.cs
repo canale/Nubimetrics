@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Nubimetrics.Application.Dtos;
+using Nubimetrics.Application.Dtos.Responses;
 using Nubimetrics.Domain.Entities;
 
 namespace Nubimetrics.Application.Helpers
@@ -8,7 +8,7 @@ namespace Nubimetrics.Application.Helpers
     {
         public MapperProfile()
         {
-            CreateMap<Pais, PaisDto>();
+            CreateMap<Pais, PaisResponse>();
         }
     }
 }
