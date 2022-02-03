@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 
 namespace Nubimetrics.Application.Services
 {
-    public  class MonedaApplicationService: IMonedaApplicationService
+    public  class CurrencyApplicationService: ICurrencyApplicationService
     {
         private readonly IMapper mapper;
-        private readonly IMonedaRepository monedaRepository;
+        private readonly ICurrencyRepository monedaRepository;
 
-        public MonedaApplicationService(IMapper mapper, IMonedaRepository monedaRepository)
+        public CurrencyApplicationService(IMapper mapper, ICurrencyRepository monedaRepository)
         {
             this.mapper = mapper;
             this.monedaRepository = monedaRepository;
         }
 
-        public async Task<IEnumerable<MonedaItemResponse>> GetAllAsync()
+        public async Task<IEnumerable<CurrencyItemResponse>> GetAllAsync()
         {
-            IEnumerable<Moneda> monedas = await monedaRepository.GetAllAsync();
-            IEnumerable<MonedaItemResponse> response = mapper.Map<IEnumerable<MonedaItemResponse>>(monedas);
+            IEnumerable<Currency> monedas = await monedaRepository.GetAllAsync();
+            IEnumerable<CurrencyItemResponse> response = mapper.Map<IEnumerable<CurrencyItemResponse>>(monedas);
             return response;
         }
     }

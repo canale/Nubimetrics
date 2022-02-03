@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Nubimetrics.Domain.Contracts.Repositories
 {
-    public interface IMonedaRepository
+    public interface ICurrencyRepository
     {
-        Task<IEnumerable<Moneda>> GetAllAsync();
+        Task<IEnumerable<Currency>> GetAllAsync();
     }
 }

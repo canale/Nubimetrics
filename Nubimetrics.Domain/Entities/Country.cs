@@ -1,17 +1,15 @@
-﻿using Nubimetrics.Domain.ValueObjects;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
 namespace Nubimetrics.Domain.Entities
 {
-    public class Pais: Entity<string>
+    public class Country: Entity<string>
     {
         public string Name { get; }
         public string Locale { get; }
         public string CurrencyId { get; }
 
 
-        public Pais(string id, string name, string locale, string currencyId):base(id)
+        public Country(string id, string name, string locale, string currencyId):base(id)
         {
             if (string.IsNullOrEmpty(id))
             {

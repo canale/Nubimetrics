@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace Nubimetrics.Application.Services
 {
-    public class PaisApplicationService : IPaisApplicationService
+    public class CountryApplicationService : ICountryApplicationService
     {
-        private readonly IPaisRepository _repository;
+        private readonly ICountryRepository _repository;
         private readonly IMapper _mapper;
         private static readonly string[] _unauthorizedPaisIds = { "BR", "CO" };
 
 
-        public PaisApplicationService(IPaisRepository repository, IMapper mapper)
+        public CountryApplicationService(ICountryRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -35,10 +35,10 @@ namespace Nubimetrics.Application.Services
                 throw new UnauthorizedException("Unauthorized request.");
             }
 
-            Pais pais = await _repository.GetByIdAsync(id) ?? throw new NotFoundException($"Couln't find the resource with id: {id}.");
-            PaisResponse paisDto = _mapper.Map<PaisResponse>(pais);
+            Country country = await _repository.GetByIdAsync(id) ?? throw new NotFoundException($"Couln't find the resource with id: {id}.");
+            PaisResponse countryDto = _mapper.Map<PaisResponse>(country);
 
-            return paisDto;
+            return countryDto;
         }
     }
 }

@@ -9,9 +9,9 @@ namespace Nubimetrics.API.Controllers
     [ApiController]
     public class BusquedaController : ControllerBase
     {
-        private readonly IPaisApplicationService _paisApplicationService;
+        private readonly ICountryApplicationService _paisApplicationService;
 
-        public BusquedaController(IPaisApplicationService paisApplicationService)
+        public BusquedaController(ICountryApplicationService paisApplicationService)
         {
             _paisApplicationService = paisApplicationService;
         }

@@ -9,9 +9,9 @@ namespace Nubimetrics.API.Controllers
     [Route("MyRestfulApp/[controller]")]
     public class PaisesController : ControllerBase
     {
-        private readonly IPaisApplicationService _paisApplicationService;
+        private readonly ICountryApplicationService _paisApplicationService;
 
-        public PaisesController(IPaisApplicationService paisApplicationService)
+        public PaisesController(ICountryApplicationService paisApplicationService)
         {
             _paisApplicationService = paisApplicationService;
         }

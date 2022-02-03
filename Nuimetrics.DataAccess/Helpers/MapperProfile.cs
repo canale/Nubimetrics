@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using Nubimetrics.DataAccess.Records;
 using Nubimetrics.Domain.Entities;
+using Nubimetrics.Domain.ValueObjects;
+using Nubimetrics.Infrastructure.Dtos;
 
 namespace Nubimetrics.DataAccess.Helpers
 {
@@ -8,7 +9,9 @@ namespace Nubimetrics.DataAccess.Helpers
     {
         public MapperProfile()
         {
-            CreateMap<ClassifiedLocation, Pais>();
+            CreateMap<ClassifiedLocation, Country>();
+            CreateMap<CurrencyDto, Currency>();
+            CreateMap<CurrencyConversionDto, CurrencyRate>();
         }
     }
 }

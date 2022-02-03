@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Nubimetrics.Application.Contracts
 {
-    public interface IPaisApplicationService
+    public interface ICountryApplicationService
     {
         Task<PaisResponse> GetByIdAsync(string id);
     }

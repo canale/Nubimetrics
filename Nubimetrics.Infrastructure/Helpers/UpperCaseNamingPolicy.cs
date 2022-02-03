@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace Nubimetrics.DataAccess.Helpers
+namespace Nubimetrics.Infrastructure.Helpers
 {
     internal class UpperCaseNamingPolicy : JsonNamingPolicy
     {

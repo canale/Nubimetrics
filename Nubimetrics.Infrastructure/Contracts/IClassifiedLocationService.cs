@@ -1,7 +1,7 @@
-﻿using Nubimetrics.DataAccess.Records;
+﻿using Nubimetrics.Infrastructure.Dtos;
 using System.Threading.Tasks;
 
-namespace Nubimetrics.DataAccess.Contracts
+namespace Nubimetrics.Infrastructure.Contracts
 {
     public interface IClassifiedLocationService
     {

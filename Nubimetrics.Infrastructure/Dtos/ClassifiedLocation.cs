@@ -1,4 +1,5 @@
-﻿namespace Nubimetrics.DataAccess.Records
+﻿
+namespace Nubimetrics.Infrastructure.Dtos
 {
     public class ClassifiedLocation
     {

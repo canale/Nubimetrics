@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace Nubimetrics.Application.Contracts
 {
-    public interface IMonedaApplicationService
+    public interface ICurrencyApplicationService
     {
-        Task<IEnumerable<MonedaItemResponse>> GetAllAsync();
+        Task<IEnumerable<CurrencyItemResponse>> GetAllAsync();
     }
 }

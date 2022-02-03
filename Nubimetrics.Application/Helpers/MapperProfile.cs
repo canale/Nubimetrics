@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Nubimetrics.Application.Dtos.Responses;
 using Nubimetrics.Domain.Entities;
+using Nubimetrics.Domain.ValueObjects;
 
 namespace Nubimetrics.Application.Helpers
 {
@@ -8,7 +9,10 @@ namespace Nubimetrics.Application.Helpers
     {
         public MapperProfile()
         {
-            CreateMap<Pais, PaisResponse>();
+            CreateMap<Country, PaisResponse>();
+            CreateMap<Currency, CurrencyItemResponse>();
+               // .ForMember(dto => dto.Rate, opt => opt.MapFrom(src => src.));
+            CreateMap<CurrencyRate, CurrencyRateResponse>();
         }
     }
 }

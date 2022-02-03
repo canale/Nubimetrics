@@ -1,8 +1,7 @@
 ﻿using RestSharp;
 using System;
 using System.Net;
-
-namespace Nubimetrics.DataAccess.Helpers
+namespace Nubimetrics.Infrastructure.Helpers
 {
     public static class RestResponseExtenssions
     {

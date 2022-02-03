@@ -2,18 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Nubimetrics.Domain\Nubimetrics.Domain.csproj" />
-    <ProjectReference Include="..\Nubimetrics.Infrastructure\Nubimetrics.Infrastructure.csproj" />
+    <None Remove="Services\Integrations\ClassifiedLocationService.cs~RF2664b673.TMP" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="11.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
     <PackageReference Include="RestSharp" Version="107.1.2" />
+    <PackageReference Include="System.Threading.Tasks.Dataflow" Version="6.0.0" />
   </ItemGroup>
 
 </Project>

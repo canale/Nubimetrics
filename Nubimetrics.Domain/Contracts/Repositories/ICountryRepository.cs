@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Nubimetrics.Domain.Contracts.Repositories
 {
-    public interface IPaisRepository
+    public interface ICountryRepository
     {
-        Task<Pais> GetByIdAsync(string id);
+        Task<Country> GetByIdAsync(string id);
     }
 }

@@ -11,9 +11,9 @@ namespace Nubimetrics.API.Controllers
     [Route("MyRestfulApp/[controller]")]
     public class MonedasController : ControllerBase
     {
-        private readonly IMonedaApplicationService monedaApplicationService;
+        private readonly ICurrencyApplicationService monedaApplicationService;
 
-        public MonedasController(IMonedaApplicationService monedaApplicationService)
+        public MonedasController(ICurrencyApplicationService monedaApplicationService)
         {
             this.monedaApplicationService = monedaApplicationService;
         }
@@ -21,7 +21,7 @@ namespace Nubimetrics.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            IEnumerable<MonedaItemResponse> monedas = await monedaApplicationService.GetAllAsync();
+            IEnumerable<CurrencyItemResponse> monedas = await monedaApplicationService.GetAllAsync();
             return Ok(monedas);
         }
     }
