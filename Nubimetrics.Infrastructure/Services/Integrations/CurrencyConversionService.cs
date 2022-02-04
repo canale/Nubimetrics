@@ -23,7 +23,6 @@ namespace Nubimetrics.Infrastructure.Services.Integrations
 
         public async Task<CurrencyConversionDto> GetRate(string from, string to)
         {
-            Debug.WriteLine ($"[CurrencyConversionSettings.GetRate, IN ---->>> {DateTime.Now}] [from: {from} - to: {to}] ");
             CurrencyConversionDto result = default;
             var client = new RestClient(settings.UriService);
             var request = new RestRequest($"{settings.Resource}?from={from}&to={to}", Method.Get);
@@ -34,7 +33,7 @@ namespace Nubimetrics.Infrastructure.Services.Integrations
                 PropertyNamingPolicy = new UpperCaseNamingPolicy(),
             };
 
-            Debug.WriteLine($"[CurrencyConversionSettings.GetRate, OUT <<<----- {DateTime.Now}] [from: {from} - to: {to}] ");
+
             response
                 .OnSucces(response => result = JsonSerializer.Deserialize<CurrencyConversionDto>(response.Content, options))
                 .OnError(response =>
