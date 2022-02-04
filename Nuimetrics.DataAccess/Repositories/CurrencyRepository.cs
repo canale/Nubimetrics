@@ -6,6 +6,7 @@ using Nubimetrics.Domain.Entities;
 using Nubimetrics.Domain.ValueObjects;
 using Nubimetrics.Infrastructure.Contracts;
 using Nubimetrics.Infrastructure.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -36,58 +37,26 @@ namespace Nubimetrics.DataAccess.Repositories
             CurrencyConversionDto rateDto;
 
 
-                Stopwatch stopwatch = new Stopwatch();
-
-                stopwatch.Start();
-                await result
-            .ParallelForEachAsync(
-                async currency =>
-                {
-                    try
+            await result
+                .ParallelForEachAsync(
+                    async currency =>
                     {
-                        rateDto = await currencyRateService.GetRate(currency.Id, DOLAR_ID);
-                        currency.ChangeRate(mapper.Map<CurrencyRate>(rateDto));
-                    }
-                    catch (System.Exception ex)
-                    {
-                      //  logger.LogError(ex.Message, ex.StackTrace);
-                     /*   if (ex.Message == )
+                        try
                         {
-
+                            rateDto = await currencyRateService.GetRate(currency.Id, DOLAR_ID);
+                            currency.ChangeRate(mapper.Map<CurrencyRate>(rateDto));
                         }
-                        throw ex;*/
+                        catch (Exception ex)
+                        {
+                          //  logger.LogError(ex.Message, ex.StackTrace);
+                         /*   if (ex.Message == )
+                            {
+
+                            }
+                            throw ex;*/
+                        }
                     }
-                }
-            );
-
-
-            stopwatch.Stop();
-            Debug.WriteLine("...................................");
-            Debug.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds);
-
-            stopwatch.Reset();
-
-            stopwatch.Start();
-            foreach (Currency currency in result)
-            {
-                try
-                {
-                    rateDto = await currencyRateService.GetRate(currency.Id, DOLAR_ID);
-                    currency.ChangeRate(mapper.Map<CurrencyRate>(rateDto));
-                }
-                catch (System.Exception ex)
-                {
-                    //  logger.LogError(ex.Message, ex.StackTrace);
-                    /*   if (ex.Message == )
-                       {
-
-                       }
-                       throw ex;*/
-                }
-            }
-
-            stopwatch.Stop();
-            Debug.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds);
+                );
 
             return result; 
         }

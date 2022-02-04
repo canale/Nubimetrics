@@ -5,11 +5,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Nubimetrics.API.Filters;
+using Nubimetrics.API.Helpers;
 using Nubimetrics.Application.Contracts;
 using Nubimetrics.Application.Services;
 using Nubimetrics.DataAccess.Repositories;
 using Nubimetrics.Domain.Contracts.Repositories;
 using Nubimetrics.Infrastructure.Contracts;
+using Nubimetrics.Infrastructure.Helpers;
 using Nubimetrics.Infrastructure.Services.Integrations;
 using Nubimetrics.Infrastructure.Settings;
 using System;
@@ -38,6 +40,9 @@ namespace Nubimetrics.API
             var currencyConversionSettings = Configuration.GetSection("currencyConversionSettings");
             services.Configure<CurrencyConversionSettings>(currencyConversionSettings);
 
+            var currencyActivitySettings = Configuration.GetSection("currencyActivitySettings");
+            services.Configure<CurrencyActivitySettings>(currencyActivitySettings);
+
 
 
             services.AddControllers(options => options.Filters.Add<ExceptionFilter>());
@@ -61,6 +66,9 @@ namespace Nubimetrics.API
             //Application services
             services.AddTransient<ICountryApplicationService, CountryApplicationService>();
             services.AddTransient<ICurrencyApplicationService, CurrencyApplicationService>();
+
+            services.AddTransient<IFileWriter, FileWriter>();
+            services.AddTransient<CurrencyStartupActivity>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -81,6 +89,12 @@ namespace Nubimetrics.API
             {
                 endpoints.MapControllers();
             });
+
+            CurrencyStartupActivity currencyInitialActivity = app
+                .ApplicationServices
+                .GetRequiredService<CurrencyStartupActivity>();
+
+            currencyInitialActivity.PerformAsync();
         }
     }
 }

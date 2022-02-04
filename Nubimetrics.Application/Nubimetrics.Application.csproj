@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Nubimetrics.Domain\Nubimetrics.Domain.csproj" />
+    <ProjectReference Include="..\Nubimetrics.Infrastructure\Nubimetrics.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
