@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using Nubimetrics.Infrastructure.Contracts;
-using Nubimetrics.Infrastructure.Dtos;
 using Nubimetrics.Infrastructure.Settings;
+using Nubimetrics.Shared.Models;
 using System.Threading.Tasks;
 
 namespace Nubimetrics.Infrastructure.Services.Integrations
@@ -13,9 +13,9 @@ namespace Nubimetrics.Infrastructure.Services.Integrations
         {
         }
 
-        public async Task<SearchDto> GetFilteredAsync(string term)
+        public async Task<Search> GetFilteredAsync(string term)
         {
-            return await RequestDataByParam<SearchDto>($"q={term}");
+            return await RequestDataByParam<Search>($"q={term}");
         }
     }
 }

@@ -1,9 +1,8 @@
-﻿using Nubimetrics.Domain.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Nubimetrics.Domain.ValueObjects
+namespace Nubimetrics.Shared.Models
 {
-    public class Search : ValueObject
+    public class Search 
     {
         public string SiteId { get; set; }
         public string CountryDefaultTimeZone { get; set; }
@@ -15,13 +14,5 @@ namespace Nubimetrics.Domain.ValueObjects
         public IEnumerable<Filter> Filters { get; set; }
         public IEnumerable<FilterItem> AvailableFilters { get; set; }
 
-        protected override IEnumerable<object> GetEqualityComponents()
-        {
-            yield return SiteId;
-            yield return CountryDefaultTimeZone;
-            yield return Query;
-            yield return Paging;
-            yield return Results;
-        }
     }
 }

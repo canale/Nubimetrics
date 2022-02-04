@@ -1,0 +1,12 @@
+﻿namespace Nubimetrics.Infrastructure.Dtos
+{
+    public class SearchResultDto
+    {                            
+        public string Id            {get; set;}
+        public string SiteId       {get; set;}
+        public string Title         {get; set;}
+        public decimal Price         {get; set;}
+        public Seller Seller     {get; set;}
+        public string Permalink { get; set; }
+    }
+}

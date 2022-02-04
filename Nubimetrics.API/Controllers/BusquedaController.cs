@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Nubimetrics.Application.Contracts;
-using Nubimetrics.Application.Dtos.Responses;
+using Nubimetrics.Shared.Models;
 using System.Threading.Tasks;
 
 namespace Nubimetrics.API.Controllers
@@ -20,7 +20,7 @@ namespace Nubimetrics.API.Controllers
         [HttpGet("{term}")]
         public async Task<IActionResult> GetFiltered(string term)
         {
-            SearchResponse dto = await searchApplicationService.GetFilteredAsync(term);
+            Search  dto = await searchApplicationService.GetFilteredAsync(term);
             return Ok(dto);
         }
     }

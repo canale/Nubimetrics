@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Nubimetrics.Application\Nubimetrics.Application.csproj" />
     <ProjectReference Include="..\Nubimetrics.Infrastructure\Nubimetrics.Infrastructure.csproj" />
+    <ProjectReference Include="..\Nubimetrics.Shared\Nubimetrics.Shared.csproj" />
     <ProjectReference Include="..\Nuimetrics.DataAccess\Nubimetrics.DataAccess.csproj" />
   </ItemGroup>
 

@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using Nubimetrics.Application.Contracts;
-using Nubimetrics.Application.Dtos.Responses;
 using Nubimetrics.Domain.Contracts.Repositories;
-using Nubimetrics.Domain.ValueObjects;
+using Nubimetrics.Shared.Models;
 using System.Threading.Tasks;
 
 namespace Nubimetrics.Application.Services
@@ -18,11 +17,10 @@ namespace Nubimetrics.Application.Services
             this.mapper = mapper;
         }
 
-        public async Task<SearchResponse> GetFilteredAsync(string term)
+        public async Task<Search> GetFilteredAsync(string term)
         {
             Search searchResult = await searchRepository.GetFilteredAsync(term);
-            SearchResponse responsee = mapper.Map<SearchResponse>(searchResult);
-            return responsee;
+            return searchResult;
         }
     }
 }

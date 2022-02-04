@@ -11,10 +11,15 @@ namespace Nubimetrics.Application.Helpers
         {
             CreateMap<Country, CountryResponse>();
             CreateMap<Currency, CurrencyItemResponse>();
-               // .ForMember(dto => dto.Rate, opt => opt.MapFrom(src => src.));
             CreateMap<CurrencyRate, CurrencyRateResponse>();
             CreateMap<Search, SearchResponse>();
             CreateMap<Paging, PagingResponse>();
+            CreateMap<KeyValue, KeyValueResponse>();
+            CreateMap<Value, ValueResponse>();
+            CreateMap<Filter, FilterResponse>();
+            CreateMap<FilterItem, FilterItemResponse>();
+            CreateMap<ValueItemFilter, ValueItemFilterResponse>();
+            CreateMap<SearchResult, SearchResultResponse>();
         }
     }
 }

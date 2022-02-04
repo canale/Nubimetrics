@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Nubimetrics.Domain\Nubimetrics.Domain.csproj" />
     <ProjectReference Include="..\Nubimetrics.Infrastructure\Nubimetrics.Infrastructure.csproj" />
+    <ProjectReference Include="..\Nubimetrics.Shared\Nubimetrics.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

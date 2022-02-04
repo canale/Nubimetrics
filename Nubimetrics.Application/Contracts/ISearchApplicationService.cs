@@ -1,10 +1,11 @@
-﻿using Nubimetrics.Application.Dtos.Responses;
+﻿
+using Nubimetrics.Shared.Models;
 using System.Threading.Tasks;
 
 namespace Nubimetrics.Application.Contracts
 {
     public interface ISearchApplicationService
     {
-        Task<SearchResponse> GetFilteredAsync(string term);
+        Task<Search> GetFilteredAsync(string term);
     }
 }

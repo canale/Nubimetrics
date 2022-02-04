@@ -1,4 +1,5 @@
-﻿using Nubimetrics.Domain.ValueObjects;
+﻿
+using Nubimetrics.Shared.Models;
 using System.Threading.Tasks;
 
 namespace Nubimetrics.Domain.Contracts.Repositories

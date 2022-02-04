@@ -1,10 +1,10 @@
-﻿using Nubimetrics.Infrastructure.Dtos;
+﻿using Nubimetrics.Shared.Models;
 using System.Threading.Tasks;
 
 namespace Nubimetrics.Infrastructure.Contracts
 {
     public interface ISearchService
     {
-        Task<SearchDto> GetFilteredAsync(string term);
+        Task<Search> GetFilteredAsync(string term);
     }
 }
