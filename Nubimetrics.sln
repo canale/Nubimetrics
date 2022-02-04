@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E706F5DE-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{9701CA3A-BDE7-4C90-8E88-1BE0C3B0A968}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CE8487BA-7630-4E83-83F0-62A06166D3CD}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nubimetrics.API", "Nubimetrics.API\Nubimetrics.API.csproj", "{D5C22EED-F863-4B4A-AD83-69956F72E340}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nubimetrics.Application", "Nubimetrics.Application\Nubimetrics.Application.csproj", "{30B4BB75-2C98-4FE8-B43D-5F6E967C30AC}"
@@ -19,11 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nubimetrics.Domain", "Nubim
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nubimetrics.DataAccess", "Nuimetrics.DataAccess\Nubimetrics.DataAccess.csproj", "{96F256E5-B197-40E0-980B-F496B07C7ED0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nubimetrics.Tests", "Nubimetrics.Tests\Nubimetrics.Tests.csproj", "{06599961-5670-4989-97F3-73D1D8FA340E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nubimetrics.Infrastructure", "Nubimetrics.Infrastructure\Nubimetrics.Infrastructure.csproj", "{7A3B99D6-6690-4EB0-8018-F78F7D8119DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nubimetrics.Shared", "Nubimetrics.Shared\Nubimetrics.Shared.csproj", "{C4DE6554-FD1C-4620-BC53-D9DCDBA48DD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nubimetrics.Shared", "Nubimetrics.Shared\Nubimetrics.Shared.csproj", "{C4DE6554-FD1C-4620-BC53-D9DCDBA48DD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +43,6 @@ Global
 		{96F256E5-B197-40E0-980B-F496B07C7ED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96F256E5-B197-40E0-980B-F496B07C7ED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96F256E5-B197-40E0-980B-F496B07C7ED0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{06599961-5670-4989-97F3-73D1D8FA340E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06599961-5670-4989-97F3-73D1D8FA340E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06599961-5670-4989-97F3-73D1D8FA340E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06599961-5670-4989-97F3-73D1D8FA340E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7A3B99D6-6690-4EB0-8018-F78F7D8119DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7A3B99D6-6690-4EB0-8018-F78F7D8119DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A3B99D6-6690-4EB0-8018-F78F7D8119DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -68,7 +60,6 @@ Global
 		{30B4BB75-2C98-4FE8-B43D-5F6E967C30AC} = {E706F5DE-C509-458D-8260-E17C85DE47FE}
 		{613E56E2-4B9F-46CC-A210-F183EA2BEA63} = {E706F5DE-C509-458D-8260-E17C85DE47FE}
 		{96F256E5-B197-40E0-980B-F496B07C7ED0} = {9701CA3A-BDE7-4C90-8E88-1BE0C3B0A968}
-		{06599961-5670-4989-97F3-73D1D8FA340E} = {CE8487BA-7630-4E83-83F0-62A06166D3CD}
 		{7A3B99D6-6690-4EB0-8018-F78F7D8119DB} = {9701CA3A-BDE7-4C90-8E88-1BE0C3B0A968}
 		{C4DE6554-FD1C-4620-BC53-D9DCDBA48DD8} = {E706F5DE-C509-458D-8260-E17C85DE47FE}
 	EndGlobalSection
