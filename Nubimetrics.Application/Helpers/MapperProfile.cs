@@ -9,10 +9,12 @@ namespace Nubimetrics.Application.Helpers
     {
         public MapperProfile()
         {
-            CreateMap<Country, PaisResponse>();
+            CreateMap<Country, CountryResponse>();
             CreateMap<Currency, CurrencyItemResponse>();
                // .ForMember(dto => dto.Rate, opt => opt.MapFrom(src => src.));
             CreateMap<CurrencyRate, CurrencyRateResponse>();
+            CreateMap<Search, SearchResponse>();
+            CreateMap<Paging, PagingResponse>();
         }
     }
 }

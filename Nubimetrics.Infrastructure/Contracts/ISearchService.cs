@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Nubimetrics.Infrastructure.Contracts
 {
-    public interface IClassifiedLocationService
+    public interface ISearchService
     {
-        Task<ClassifiedLocationDto> GetCountryByIdAsync(string id);
+        Task<SearchDto> GetFilteredAsync(string term);
     }
 }

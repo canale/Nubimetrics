@@ -20,7 +20,7 @@ namespace Nubimetrics.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPaises(string id)
         {
-            PaisResponse dto = await _paisApplicationService.GetByIdAsync(id);
+            CountryResponse dto = await _paisApplicationService.GetByIdAsync(id);
             return Ok(dto);
         }
     }

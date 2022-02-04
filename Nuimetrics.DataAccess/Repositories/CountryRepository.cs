@@ -20,7 +20,7 @@ namespace Nubimetrics.DataAccess.Repositories
 
         public async Task<Country> GetByIdAsync(string id)
         {
-            ClassifiedLocation Location = await locationService.GetCountryByIdAsync(id);
+            ClassifiedLocationDto Location = await locationService.GetCountryByIdAsync(id);
             return (Location == null) ? null : mapper.Map<Country>(Location);
         }
     }

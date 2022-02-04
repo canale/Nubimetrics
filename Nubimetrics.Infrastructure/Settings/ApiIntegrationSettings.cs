@@ -10,4 +10,5 @@ namespace Nubimetrics.Infrastructure.Settings
     public class ClassifiedLocationSettings : ApiIntegrationSettings { }
     public class CurrencySettings : ApiIntegrationSettings { }
     public class CurrencyConversionSettings : ApiIntegrationSettings { }
+    public class SearchSettings : ApiIntegrationSettings { }
 }

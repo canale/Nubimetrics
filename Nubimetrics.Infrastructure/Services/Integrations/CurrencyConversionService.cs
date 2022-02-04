@@ -30,7 +30,7 @@ namespace Nubimetrics.Infrastructure.Services.Integrations
 
             var options = new JsonSerializerOptions
             {
-                PropertyNamingPolicy = new UpperCaseNamingPolicy(),
+                PropertyNamingPolicy = new CamelCaseNamingPolicy(),
             };
 
 

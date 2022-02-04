@@ -23,7 +23,7 @@ namespace Nubimetrics.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<PaisResponse> GetByIdAsync(string id)
+        public async Task<CountryResponse> GetByIdAsync(string id)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -36,7 +36,7 @@ namespace Nubimetrics.Application.Services
             }
 
             Country country = await _repository.GetByIdAsync(id) ?? throw new NotFoundException($"Couln't find the resource with id: {id}.");
-            PaisResponse countryDto = _mapper.Map<PaisResponse>(country);
+            CountryResponse countryDto = _mapper.Map<CountryResponse>(country);
 
             return countryDto;
         }

@@ -9,9 +9,11 @@ namespace Nubimetrics.DataAccess.Helpers
     {
         public MapperProfile()
         {
-            CreateMap<ClassifiedLocation, Country>();
+            CreateMap<ClassifiedLocationDto, Country>();
             CreateMap<CurrencyDto, Currency>();
             CreateMap<CurrencyConversionDto, CurrencyRate>();
+            CreateMap<PagingDto, Paging>();
+            CreateMap<SearchDto, Search>();
         }
     }
 }

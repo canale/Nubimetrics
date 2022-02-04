@@ -9,18 +9,18 @@ namespace Nubimetrics.API.Controllers
     [ApiController]
     public class BusquedaController : ControllerBase
     {
-        private readonly ICountryApplicationService _paisApplicationService;
+        private readonly ISearchApplicationService searchApplicationService;
 
-        public BusquedaController(ICountryApplicationService paisApplicationService)
+        public BusquedaController(ISearchApplicationService searchApplicationService)
         {
-            _paisApplicationService = paisApplicationService;
+            this.searchApplicationService = searchApplicationService;
         }
         
         //[Route]
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetPaises(string id)
+        [HttpGet("{term}")]
+        public async Task<IActionResult> GetFiltered(string term)
         {
-            PaisResponse dto = await _paisApplicationService.GetByIdAsync(id);
+            SearchResponse dto = await searchApplicationService.GetFilteredAsync(term);
             return Ok(dto);
         }
     }

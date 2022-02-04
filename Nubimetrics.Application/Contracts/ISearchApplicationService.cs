@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Nubimetrics.Application.Contracts
 {
-    public interface ICountryApplicationService
+    public interface ISearchApplicationService
     {
-        Task<CountryResponse> GetByIdAsync(string id);
+        Task<SearchResponse> GetFilteredAsync(string term);
     }
 }

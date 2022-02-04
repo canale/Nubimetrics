@@ -1,7 +1,7 @@
 ﻿
 namespace Nubimetrics.Infrastructure.Dtos
 {
-    public class ClassifiedLocation
+    public class ClassifiedLocationDto
     {
         public string Id { get; set; }
         public string Name { get; set; }

@@ -42,6 +42,9 @@ namespace Nubimetrics.API
             var currencyConversionSettings = Configuration.GetSection("currencyConversionSettings");
             services.Configure<CurrencyConversionSettings>(currencyConversionSettings);
 
+            var searchSettings = Configuration.GetSection("searchSettings");
+            services.Configure<SearchSettings>(searchSettings);
+
             var currencyActivitySettings = Configuration.GetSection("currencyActivitySettings");
             services.Configure<CurrencyActivitySettings>(currencyActivitySettings);
 
@@ -62,14 +65,17 @@ namespace Nubimetrics.API
             services.AddTransient<IClassifiedLocationService, ClassifiedLocationService>();
             services.AddTransient<ICurrencyService, CurrencyService>();
             services.AddTransient<ICurrencyConversionService, CurrencyConversionService>();
+            services.AddTransient<ISearchService, SearchService>();
 
             //Repositories
             services.AddTransient<ICountryRepository, CountryRepository>();
             services.AddTransient<ICurrencyRepository, CurrencyRepository>();
+            services.AddTransient<ISearchRepository, SearchRepository>();
 
             //Application services
             services.AddTransient<ICountryApplicationService, CountryApplicationService>();
             services.AddTransient<ICurrencyApplicationService, CurrencyApplicationService>();
+            services.AddTransient<ISearchApplicationService, SearchApplicationService>();
 
             services.AddTransient<IFileWriter, FileWriter>();
             services.AddTransient<IStartupActivityAsync, CurrencyStartupActivity>();

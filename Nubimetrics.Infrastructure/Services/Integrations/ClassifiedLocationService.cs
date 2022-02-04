@@ -20,20 +20,20 @@ namespace Nubimetrics.Infrastructure.Services.Integrations
             this.settings = settings.Value;
         }
 
-        public async Task<ClassifiedLocation> GetCountryByIdAsync(string id)
+        public async Task<ClassifiedLocationDto> GetCountryByIdAsync(string id)
         {
-            ClassifiedLocation result = default;
+            ClassifiedLocationDto result = default;
             var client = new RestClient(settings.UriService);
             var request = new RestRequest($"{settings.Resource}/{id}", Method.Get);
-            RestResponse< ClassifiedLocation> response = await client.ExecuteAsync<ClassifiedLocation>(request);
+            RestResponse< ClassifiedLocationDto> response = await client.ExecuteAsync<ClassifiedLocationDto>(request);
 
             var options = new JsonSerializerOptions
             {
-                PropertyNamingPolicy = new UpperCaseNamingPolicy(),
+                PropertyNamingPolicy = new CamelCaseNamingPolicy(),
             };
 
             response
-                .OnSucces((response) => result = JsonSerializer.Deserialize<ClassifiedLocation>(response.Content, options))
+                .OnSucces((response) => result = JsonSerializer.Deserialize<ClassifiedLocationDto>(response.Content, options))
                 .OnError((response) =>
                 {
                     if (response.StatusCode != HttpStatusCode.NotFound)

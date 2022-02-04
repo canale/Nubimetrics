@@ -6,7 +6,11 @@ namespace Nubimetrics.Infrastructure.Helpers
     {
         public static string ToJson(this object target)
         {
-            return JsonSerializer.Serialize(target);
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+            };
+            return JsonSerializer.Serialize(target, options);
         }
     }
 }
