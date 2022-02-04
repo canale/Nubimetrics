@@ -15,6 +15,8 @@ using Nubimetrics.Infrastructure.Helpers;
 using Nubimetrics.Infrastructure.Services.Integrations;
 using Nubimetrics.Infrastructure.Settings;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Nubimetrics.API
 {
@@ -43,6 +45,8 @@ namespace Nubimetrics.API
             var currencyActivitySettings = Configuration.GetSection("currencyActivitySettings");
             services.Configure<CurrencyActivitySettings>(currencyActivitySettings);
 
+            var currencyRateActivitySettings = Configuration.GetSection("currencyRateActivitySettings");
+            services.Configure<CurrencyRateActivitySettings>(currencyRateActivitySettings);
 
 
             services.AddControllers(options => options.Filters.Add<ExceptionFilter>());
@@ -68,7 +72,8 @@ namespace Nubimetrics.API
             services.AddTransient<ICurrencyApplicationService, CurrencyApplicationService>();
 
             services.AddTransient<IFileWriter, FileWriter>();
-            services.AddTransient<CurrencyStartupActivity>();
+            services.AddTransient<IStartupActivityAsync, CurrencyStartupActivity>();
+            services.AddTransient<IStartupActivityAsync, CurrencyRateStartupActivity>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -90,11 +95,23 @@ namespace Nubimetrics.API
                 endpoints.MapControllers();
             });
 
-            CurrencyStartupActivity currencyInitialActivity = app
+            PerformStartupActivities(app.ApplicationServices.GetServices<IStartupActivityAsync>());
+          
+            
+            /*CurrencyStartupActivity currencyInitialActivity = app
                 .ApplicationServices
                 .GetRequiredService<CurrencyStartupActivity>();
 
             currencyInitialActivity.PerformAsync();
+
+            CurrencyRateStartupActivity currencyInitialActivity = app
+                .ApplicationServices.GetServices<>();
+                .GetRequiredService<CurrencyRateStartupActivity>();*/
+        }
+
+        private void PerformStartupActivities(IEnumerable<IStartupActivityAsync> enumerable)
+        {
+            enumerable.ToList().ForEach(activity => activity.PerformAsync());
         }
     }
 }

@@ -1,25 +1,25 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Nubimetrics.Application.Contracts;
 using Nubimetrics.Infrastructure.Contracts;
 using System;
-using System.Text.Json;
+using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
-using Nubimetrics.Infrastructure.Helpers;
-using Microsoft.Extensions.Logging;
 
 namespace Nubimetrics.API.Helpers
 {
-    public class CurrencyStartupActivity : IStartupActivityAsync
+    public class CurrencyRateStartupActivity : IStartupActivityAsync
     {
         private readonly ICurrencyApplicationService currencyApplicationService;
         private readonly IFileWriter fileWriter;
-        private readonly ILogger<CurrencyStartupActivity> logger;
-        private readonly FileSettings settings;
+        private readonly ILogger<CurrencyRateStartupActivity> logger;
+        private readonly CurrencyRateActivitySettings settings;
 
-        public CurrencyStartupActivity(ICurrencyApplicationService currencyApplicationService, 
+        public CurrencyRateStartupActivity(ICurrencyApplicationService currencyApplicationService, 
                 IFileWriter fileWriter, 
-                IOptions<CurrencyActivitySettings> currencyActivitySettings, 
-                ILogger<CurrencyStartupActivity> logger)
+                IOptions<CurrencyRateActivitySettings> currencyActivitySettings, 
+                ILogger<CurrencyRateStartupActivity> logger)
         {
             if (currencyApplicationService is null)
             {
@@ -48,13 +48,13 @@ namespace Nubimetrics.API.Helpers
             try
             {
                 var currencies = await this.currencyApplicationService.GetAllAsync();
-
+                string rates = string.Join(',', currencies.Where(c => c.Rate != null).Select(c => c.Rate.Ratio.ToString(CultureInfo.InvariantCulture)));
                 await fileWriter.WriteAsync(opt => {
                     opt
                     .UseAssemblyDirectory(settings.Directory)
                     .AddFileName(settings.FileName);
                 }
-                ,currencies.ToJson());
+                ,rates);
             }
             catch (Exception ex)
             {
